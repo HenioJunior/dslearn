@@ -2,11 +2,10 @@ package com.crystaldata.dslearning.entities;
 
 import com.crystaldata.dslearning.entities.pk.EnrollmentPK;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_enrollment")
@@ -21,7 +20,10 @@ public class Enrollment {
     private boolean available;
     private boolean onlyUpdate;
 
-public Enrollment(){}
+    @ManyToMany(mappedBy = "enrollmentsDone")
+    private Set<Lesson> lessonsDone = new HashSet<>();
+
+    public Enrollment(){}
 
     public Enrollment(User user, Offer offer, Instant enrollMoment, Instant refundMoment, boolean available, boolean onlyUpdate) {
         id.setUser(user);
