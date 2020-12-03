@@ -2,9 +2,7 @@ package com.crystaldata.dslearning.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_user")
@@ -22,6 +20,11 @@ public class User implements Serializable {
     @JoinTable(name = "tb_user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Notification> notification = new ArrayList<>();
+
+
 
     public User(){}
 
@@ -53,6 +56,10 @@ public class User implements Serializable {
         return roles;
     }
 
+    public List<Notification> getNotification() {
+        return notification;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -67,10 +74,6 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 
     @Override
