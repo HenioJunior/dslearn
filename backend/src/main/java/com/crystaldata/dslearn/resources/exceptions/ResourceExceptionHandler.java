@@ -1,9 +1,9 @@
 package com.crystaldata.dslearn.resources.exceptions;
 
-import com.crystaldata.dslearn.services.exceptions.DatabaseException;
-import com.crystaldata.dslearn.services.exceptions.ForbiddenException;
-import com.crystaldata.dslearn.services.exceptions.ResourceNotFoundException;
-import com.crystaldata.dslearn.services.exceptions.UnauthorizedException;
+import java.time.Instant;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -11,8 +11,10 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import javax.servlet.http.HttpServletRequest;
-import java.time.Instant;
+import com.crystaldata.dslearn.services.exceptions.DatabaseException;
+import com.crystaldata.dslearn.services.exceptions.ForbiddenException;
+import com.crystaldata.dslearn.services.exceptions.ResourceNotFoundException;
+import com.crystaldata.dslearn.services.exceptions.UnauthorizedException;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
@@ -34,11 +36,11 @@ public class ResourceExceptionHandler {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         StandardError err = new StandardError();
         err.setTimestamp(Instant.now());
-        err.setStatus(status.BAD_REQUEST.value());
+        err.setStatus(status.value());
         err.setError("Database exception");
         err.setMessage(e.getMessage());
         err.setPath(request.getRequestURI());
-        return ResponseEntity.status(status.BAD_REQUEST).body(err);
+        return ResponseEntity.status(status).body(err);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

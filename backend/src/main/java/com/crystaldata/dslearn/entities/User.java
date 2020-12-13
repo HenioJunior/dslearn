@@ -74,7 +74,7 @@ public class User implements UserDetails, Serializable {
     }
 
     public void setEmail(String email) {
-        email = email;
+        this.email = email;
     }
 
     public void setPassword(String password) {

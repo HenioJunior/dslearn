@@ -1,12 +1,9 @@
 package com.crystaldata.dslearn.dto;
 
-import com.crystaldata.dslearn.entities.Notification;
-import com.crystaldata.dslearn.entities.User;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.time.Instant;
+
+import com.crystaldata.dslearn.entities.Notification;
 
 public class NotificationDTO implements Serializable {
     private static final long serialVersionUID = 1L;

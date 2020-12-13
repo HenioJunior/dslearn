@@ -1,9 +1,8 @@
 package com.crystaldata.dslearn.dto;
 
-import com.crystaldata.dslearn.entities.User;
-
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+
+import com.crystaldata.dslearn.entities.User;
 
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;

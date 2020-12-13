@@ -1,15 +1,14 @@
 package com.crystaldata.dslearn.services;
 
-import com.crystaldata.dslearn.dto.NotificationDTO;
-import com.crystaldata.dslearn.entities.Notification;
-import com.crystaldata.dslearn.entities.User;
-import com.crystaldata.dslearn.repositories.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.crystaldata.dslearn.dto.NotificationDTO;
+import com.crystaldata.dslearn.entities.Notification;
+import com.crystaldata.dslearn.entities.User;
+import com.crystaldata.dslearn.repositories.NotificationRepository;
 
 @Service
 public class NotificationService {
